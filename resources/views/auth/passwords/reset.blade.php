@@ -9,7 +9,7 @@
                 <div class="card bg-secondary shadow border-0">
                     <div class="card-body px-lg-5 py-lg-5">
                         <div class="text-center text-muted mb-4">
-                            <small>{{ __('Reset Password') }}</small>
+                            <small>{{ __('Restablecer la contraseña') }}</small>
                         </div>
                         <form role="form" method="POST" action="{{ route('password.update') }}">
                             @csrf
@@ -19,7 +19,7 @@
                             <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} mb-3">
                                 <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                        <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
                                     </div>
                                     <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" type="email" name="email" value="{{ $email ?? old('email') }}" required autofocus>
                                 </div>
