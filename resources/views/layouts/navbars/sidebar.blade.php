@@ -105,7 +105,7 @@
                         </ul>
                     </div>
                 </li> --}}
-
+{{-- 
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('icons') }}">
                         <i class="ni ni-planet text-blue"></i> {{ __('Icons') }}
@@ -115,24 +115,24 @@
                     <a class="nav-link" href="{{ route('map') }}">
                         <i class="ni ni-pin-3 text-orange"></i> {{ __('Maps') }}
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('table') }}">
+                </li> --}}
+               {{--  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('patients.index') }}">
                       <i class="ni ni-bullet-list-67 text-default"></i>
                       <span class="nav-link-text">Tables</span>
                     </a>
-                </li>
-                <li class="nav-item">
+                </li> --}}
+               {{--  <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class="ni ni-circle-08 text-pink"></i> {{ __('Register') }}
                     </a>
-                </li>
+                </li> --}}
                
             </ul>
             <!-- Divider -->
             <hr class="my-3">
             <!-- Heading -->
-            <h6 class="navbar-heading text-muted">Documentation</h6>
+            <h6 class="navbar-heading text-muted">Citas</h6>
             <!-- Navigation -->
            
         </div>
