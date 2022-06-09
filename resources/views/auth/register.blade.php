@@ -123,7 +123,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fa-solid fa-street-view"></i></span>
                                     </div>
-                                    <input class="form-control{{ $errors->has('street') ? ' is-invalid' : '' }}" placeholder="{{ __('Direccion') }}" type="text" name="company_name" value="{{ old('company_name') }}" required>
+                                    <input class="form-control{{ $errors->has('street') ? ' is-invalid' : '' }}" placeholder="{{ __('Direccion') }}" type="text" name="street" value="{{ old('street') }}" required>
                                 </div>
                                 @if ($errors->has('street'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
