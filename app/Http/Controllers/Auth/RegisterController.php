@@ -2,62 +2,89 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Models\Dentist;
+use App\Enums\UserTypes;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\RegisterDentistRequest;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
+
     use RegistersUsers;
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
+   
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
+    
+    /* protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'surname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
-    }
+    } */
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
-     */
-    protected function create(array $data)
+    
+    protected function create(RegisterDentistRequest $request)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+       
+        try {
+            
+            $user = new User;
+            $user->user_type_id = UserTypes::DENTIST;
+            $user->name = $request->name;
+            $user->surname = $request->surname;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->img_perfil = '';
+            //$user->free_trial = 0;
+            //$user->trial_ends_at = now()->addDays(10); //se debe insertar cuando agregue la tarjeta para que tenga su mes gratis
+            $user->save();
+/* 
+            //Aqui se envia el email de verificacion
+            $user->sendEmailVerificationNotification();
+            //Aqui se crea el stripe_id y el email en stripe
+            $user->createAsStripeCustomer(); */
+
+            $dentist = new Dentist;
+            $dentist->user_id = $user->id;
+            $dentist->company_name = $request->company_name;
+            $dentist->rfc = $request->rfc;
+            $dentist->street = $request->street;
+            $dentist->house_number = $request->house_number;
+            $dentist->postal_code = $request->postal_code;
+            $dentist->state = $request->state;
+            $dentist->city = $request->city;
+            $dentist->phone = $request->phone;
+            $dentist->save();
+
+            return view('auth.login');
+
+        } catch (\Exception $exception) {
+            Log::debug($exception->getMessage());
+            return response()([
+                'msg' => 'BAD',
+                'success' => false,
+                'data' => [
+                    'msgError' => 'Server error'
+                ],
+                'exeptions' => [
+                    'msgError' => $exception->getMessage()
+                ]
+            ], 500);
+        }
+
     }
 }
