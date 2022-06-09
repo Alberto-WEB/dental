@@ -6,7 +6,7 @@
     <div class="container mt--8 pb-5">
         <!-- Table -->
         <div class="row justify-content-center">
-            <div class="col-lg-6 col-md-8">
+            <div class="col-lg-7 col-md-8">
                 <div class="card bg-secondary shadow border-0">
                     
                     <div class="card-body px-lg-5 py-lg-5">
@@ -14,19 +14,37 @@
                         <form role="form" method="POST" action="{{ route('register') }}">
                             @csrf
 
-                            <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                <div class="input-group input-group-alternative mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                            <div class="form-row">
+                                <div class="col{{ $errors->has('name') ? ' has-danger' : '' }}">
+                                    <div class="input-group input-group-alternative mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                                        </div>
+                                        <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Nombre') }}" type="text" name="name" value="{{ old('name') }}" required autofocus>
                                     </div>
-                                    <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" type="text" name="name" value="{{ old('name') }}" required autofocus>
+                                    @if ($errors->has('name'))
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('name') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+    
+                                <div class="col{{ $errors->has('surname') ? ' has-danger' : '' }}">
+                                    <div class="input-group input-group-alternative mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                                        </div>
+                                        <input class="form-control{{ $errors->has('surname') ? ' is-invalid' : '' }}" placeholder="{{ __('Apellido') }}" type="text" name="surname" value="{{ old('surname') }}" required autofocus>
+                                    </div>
+                                    @if ($errors->has('surname'))
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('surname') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                              </div>
+
+                             
                             <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
@@ -40,27 +58,153 @@
                                     </span>
                                 @endif
                             </div>
-                            <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
-                                <div class="input-group input-group-alternative">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa-solid fa-unlock"></i></span>
+
+                            <div class="form-row">
+                                
+                                <div class="col{{ $errors->has('password') ? ' has-danger' : '' }}">
+                                    <div class="input-group input-group-alternative mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa-solid fa-unlock"></i></span>
+                                        </div>
+                                        <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}" type="password" name="password" required>
                                     </div>
-                                    <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}" type="password" name="password" required>
+                                    @if ($errors->has('password'))
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
-                                @if ($errors->has('password'))
+                                <div class="col">
+                                    <div class="input-group input-group-alternative mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa-solid fa-unlock"></i></span>
+                                        </div>
+                                        <input class="form-control" placeholder="{{ __('Confirm Password') }}" type="password" name="password_confirmation" required>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                           <div class="form-row">
+
+                                <div class="col{{ $errors->has('company_name') ? ' has-danger' : '' }}">
+                                    <div class="input-group input-group-alternative mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa-solid fa-building"></i></span>
+                                        </div>
+                                        <input class="form-control{{ $errors->has('company_name') ? ' is-invalid' : '' }}" placeholder="{{ __('Nombre de la compañia') }}" type="text" name="company_name" value="{{ old('company_name') }}" required>
+                                    </div>
+                                    @if ($errors->has('company_name'))
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('company_name') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
+                                <div class="col{{ $errors->has('rfc') ? ' has-danger' : '' }}">
+                                    <div class="input-group input-group-alternative mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa-solid fa-file-circle-check"></i></span>
+                                        </div>
+                                        <input class="form-control{{ $errors->has('rfc') ? ' is-invalid' : '' }}" placeholder="{{ __('RFC') }}" type="text" name="rfc" value="{{ old('rfc') }}" required>
+                                    </div>
+                                    @if ($errors->has('rfc'))
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('rfc') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
+                           </div>
+
+
+                            <div class="form-group{{ $errors->has('street') ? ' has-danger' : '' }}">
+                                <div class="input-group input-group-alternative mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa-solid fa-street-view"></i></span>
+                                    </div>
+                                    <input class="form-control{{ $errors->has('street') ? ' is-invalid' : '' }}" placeholder="{{ __('Direccion') }}" type="text" name="company_name" value="{{ old('company_name') }}" required>
+                                </div>
+                                @if ($errors->has('street'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                        <strong>{{ $errors->first('street') }}</strong>
                                     </span>
                                 @endif
                             </div>
-                            <div class="form-group">
-                                <div class="input-group input-group-alternative">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa-solid fa-unlock"></i></span>
+
+                            <div class="form-row">
+                                <div class="col{{ $errors->has('postal_code') ? ' has-danger' : '' }}">
+                                    <div class="input-group input-group-alternative mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+                                        </div>
+                                        <input class="form-control{{ $errors->has('postal_code') ? ' is-invalid' : '' }}" placeholder="{{ __('Codigo postal') }}" type="text" name="postal_code" value="{{ old('postal_code') }}" required>
                                     </div>
-                                    <input class="form-control" placeholder="{{ __('Confirm Password') }}" type="password" name="password_confirmation" required>
+                                    @if ($errors->has('postal_code'))
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('postal_code') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+    
+                                <div class="col{{ $errors->has('state') ? ' has-danger' : '' }}">
+                                    <div class="input-group input-group-alternative mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa-solid fa-map-pin"></i></span>
+                                        </div>
+                                        <input class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}" placeholder="{{ __('Estado') }}" type="text" name="state" value="{{ old('state') }}" required>
+                                    </div>
+                                    @if ($errors->has('state'))
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('state') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+    
+                                <div class="col{{ $errors->has('city') ? ' has-danger' : '' }}">
+                                    <div class="input-group input-group-alternative mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa-solid fa-city"></i></span>
+                                        </div>
+                                        <input class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" placeholder="{{ __('Ciudad') }}" type="text" name="city" value="{{ old('city') }}" required>
+                                    </div>
+                                    @if ($errors->has('city'))
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('city') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
+
+                           <div class="form-row">
+                            <div class="col{{ $errors->has('phone') ? ' has-danger' : '' }}">
+                                <div class="input-group input-group-alternative mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
+                                    </div>
+                                    <input class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="{{ __('Telefono') }}" type="text" name="phone" value="{{ old('phone') }}" required>
+                                </div>
+                                @if ($errors->has('phone'))
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('phone') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+
+                            <div class="col{{ $errors->has('house_number') ? ' has-danger' : '' }}">
+                                <div class="input-group input-group-alternative mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa-solid fa-house"></i></span>
+                                    </div>
+                                    <input class="form-control{{ $errors->has('house_number') ? ' is-invalid' : '' }}" placeholder="{{ __('Numero de casa') }}" type="text" name="house_number" value="{{ old('house_number') }}" required>
+                                </div>
+                                @if ($errors->has('house_number'))
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('house_number') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                           </div>
                            
                             <div class="row my-4">
                                 <div class="col-12">
