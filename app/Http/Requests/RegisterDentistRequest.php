@@ -49,6 +49,7 @@ class RegisterDentistRequest extends FormRequest
         'surname.required' => 'Es necesario que ingreses tu apellido',
         'email.required' => 'Es necesario que ingreses tu corre electronico',
         'email.unique' => 'El email ingresado, ya se encuentra en uso',
+        'email.email' => 'Recuerda que debe tener formato email, ejemplo - algo@gmail.com',
         'password.required' => 'Es neceario que ingreses tu password',
         'password.confirmed' => 'Las contraseñas ingresadas no coinciden',
         'password.min' => 'Tu password debe contener minimo 6 caracteres',

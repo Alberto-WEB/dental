@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\RegisterDentistRequest;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -70,7 +71,9 @@ class RegisterController extends Controller
             $dentist->phone = $request->phone;
             $dentist->save();
 
-            return view('auth.login');
+            Alert::success('Felicidades', 'Tu registro se ha realizado con exito');
+
+            //return view('auth.login');
 
         } catch (\Exception $exception) {
             Log::debug($exception->getMessage());
