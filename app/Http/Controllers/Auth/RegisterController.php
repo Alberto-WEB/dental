@@ -20,7 +20,7 @@ class RegisterController extends Controller
     use RegistersUsers;
 
    
-    protected $redirectTo = RouteServiceProvider::HOME;
+    //protected $redirectTo = RouteServiceProvider::HOME;
 
     public function __construct()
     {
@@ -73,7 +73,7 @@ class RegisterController extends Controller
 
             Alert::success('Felicidades', 'Tu registro se ha realizado con exito');
 
-            //return view('auth.login');
+            return view('auth.login');
 
         } catch (\Exception $exception) {
             Log::debug($exception->getMessage());

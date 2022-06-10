@@ -17,6 +17,8 @@ route::middleware(['verified'])->group(function(){
 Route::post('/register', [RegisterController::class, 'create']);
 
 Route::middleware(['verified', 'auth'])->group(function(){
+	Route::get('/patients', [RegisterController::class, 'index'])->name('patients');
+
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
