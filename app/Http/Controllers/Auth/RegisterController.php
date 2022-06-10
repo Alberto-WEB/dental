@@ -27,18 +27,17 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    
-    /* protected function validator(array $data)
+     protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
-    } */
+    }
 
     
-    protected function create(RegisterDentistRequest $request)
+    protected function register(RegisterDentistRequest $request)
     {
        
         try {
@@ -73,7 +72,7 @@ class RegisterController extends Controller
 
             Alert::success('Felicidades', 'Tu registro se ha realizado con exito');
 
-            return view('auth.login');
+            return view('auth.register');
 
         } catch (\Exception $exception) {
             Log::debug($exception->getMessage());
