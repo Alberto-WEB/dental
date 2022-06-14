@@ -72,7 +72,7 @@ class RegisterController extends Controller
 
             Alert::success('Felicidades', 'Tu registro se ha realizado con exito');
 
-            return view('auth.register');
+            return view('auth.login');
 
         } catch (\Exception $exception) {
             Log::debug($exception->getMessage());
