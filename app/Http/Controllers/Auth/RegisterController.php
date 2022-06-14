@@ -26,7 +26,7 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
-
+/* 
      protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -35,7 +35,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
-
+ */
     
     protected function register(RegisterDentistRequest $request)
     {
@@ -52,11 +52,11 @@ class RegisterController extends Controller
             //$user->free_trial = 0;
             //$user->trial_ends_at = now()->addDays(10); //se debe insertar cuando agregue la tarjeta para que tenga su mes gratis
             $user->save();
-/* 
+
             //Aqui se envia el email de verificacion
             $user->sendEmailVerificationNotification();
             //Aqui se crea el stripe_id y el email en stripe
-            $user->createAsStripeCustomer(); */
+            //$user->createAsStripeCustomer();
 
             $dentist = new Dentist;
             $dentist->user_id = $user->id;
