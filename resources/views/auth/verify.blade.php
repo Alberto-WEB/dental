@@ -21,7 +21,12 @@
                             {{ __('Antes de continuar, verifique su correo electrónico para obtener un enlace de verificación.') }}
                             
                             @if (Route::has('verification.resend'))
-                                {{ __('Si no recibiste el correo electrónico') }}, <a href="{{ route('verification.resend') }}">{{ __('haga clic aquí para solicitar otro') }}</a>
+                            
+                                {{ __('Si no recibiste el correo electrónico') }}, 
+                                <a  onclick="event.preventDefault(); document.getElementById('email-form').submit();">
+                                    <button type="button" class="btn btn-primary">Clic aqui</button>
+                                </a>
+                                <form id="email-form" action="{{ route('verification.resend') }}" method="POST" style="display: none;">@csrf</form>
                             @endif
                         </div>
                     </div>
