@@ -209,10 +209,15 @@
                             <div class="row my-4">
                                 <div class="col-12">
                                     <div class="custom-control custom-control-alternative custom-checkbox">
-                                        <input class="custom-control-input" id="customCheckRegister" type="checkbox">
+                                        <input class="custom-control-input" id="customCheckRegister" type="checkbox" name="terms">
                                         <label class="custom-control-label" for="customCheckRegister">
-                                            <span class="text-muted">{{ __('Estoy de acuerdo con la') }} <a href="#!">{{ __('Politica de privacidad') }}</a></span>
+                                            <span class="text-muted">{{ __('Estoy de acuerdo con los') }} <a href="#">{{ __('Terminos y Condiciones') }}</a></span>
                                         </label>
+                                        @if ($errors->has('terms'))
+                                            <span class="invalid-feedback" style="display: block;" role="alert">
+                                                <strong>{{ $errors->first('terms') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

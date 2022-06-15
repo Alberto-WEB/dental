@@ -36,6 +36,7 @@ class RegisterDentistRequest extends FormRequest
             'state' => 'required',
             'city' => 'required',
             'phone' => 'required|numeric|digits:10',
+            'terms' => 'accepted'
         ];
 
     }
@@ -66,6 +67,7 @@ class RegisterDentistRequest extends FormRequest
         'phone.required' => 'Es necesario que ingreses algun numero de contacto a 10 digitos',
         'phone.numeric' => 'Recuerda que el telefono solo debe contener numeros',
         'phone.digits' => 'Tu telefono debe contener 10 dijitos',
+        'terms.accepted' => 'Debes aceptar los terminos y condiciones'
     ];
 }
 }

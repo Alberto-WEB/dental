@@ -38,8 +38,8 @@ class RegisterController extends Controller
  */
     
     protected function register(RegisterDentistRequest $request)
-    {
-       
+    {   
+        
         try {
             
             $user = new User;
