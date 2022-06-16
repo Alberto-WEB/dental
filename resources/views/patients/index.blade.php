@@ -11,7 +11,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-5 col-md-6">
                         <h1 class="text-white">{{ __('SiurDental') }}</h1>
-                        <h2 class="text-white">Aqui va la landing Page</h2>
+                        <h2 class="text-white">Aqui lista de pacientes</h2>
                     </div>
                 </div>
             </div>
