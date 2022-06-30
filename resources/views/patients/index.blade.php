@@ -1,27 +1,92 @@
 @extends('layouts.app', ['class' => 'bg-default'])
 
 @section('title', 'Lista de Pacientes')
-    
-@endsection
 
 @section('content')
     <div class="header bg-gradient-primary py-7 py-lg-8">
-        <div class="container">
-            <div class="header-body text-center mt-7 mb-7">
-                <div class="row justify-content-center">
-                    <div class="col-lg-5 col-md-6">
-                        <h1 class="text-white">{{ __('SiurDental') }}</h1>
-                        <h2 class="text-white">Aqui lista de pacientes</h2>
-                    </div>
-                </div>
+       <div class="card shadow container">
+        <div class="card-header border-0">
+        <div class="row align-items-center">
+            <div class="col">
+            <h3 class="mb-0">Nuevo Paciente</h3>
+            </div>
+            <div class="col text-right">
+            <a href="{{ url('/pacientes') }}" class="btn btn-sm btn-success">Nuevo Paciente</a>
             </div>
         </div>
-        <div class="separator separator-bottom separator-skew zindex-100">
-            <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
-            </svg>
         </div>
+        
+        <div class="table-responsive">
+        <!-- Projects table -->
+        <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Email</th>
+                <th scope="col">Edad</th>
+                <th scope="col">Sexo</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Estatus Civil</th>
+                <th scope="col">Religion</th>
+                <th scope="col">Ocupacion</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Estatus</th>
+                <th scope="col">Opciones</th>
+            </tr>
+            </thead>
+            <tbody>
+                @foreach ($patients as $patient)
+                    <tr>
+                        <th scope="row">
+                            {{ $patient->name }}
+                        </th>
+                        <td>
+                            {{ $patient->email_patient }}
+                        </td>
+                        <td>
+                            {{ $patient->age }}
+                        </td>
+                        <td>
+                            {{ $patient->sex }}
+                        </td>
+                        <td>
+                            {{ $patient->address }}
+                        </td>
+                        <td>
+                            {{ $patient->civil_status }}
+                        </td>
+                        <td>
+                            {{ $patient->religion }}
+                        </td>
+                        <td>
+                            {{ $patient->occupation }}
+                        </td>
+                        <td>
+                            {{ $patient->phone }}
+                        </td>
+                        <td>
+                            {{ $patient->status }}
+                        </td>
+                        <td>
+                        <form action="{{ url('/pacientes/'.$patient->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <a href="{{ url('/pacientes/'.$patient->id.'/edit') }}" class="btn btn-sm btn-primary">Editar</a>
+                            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                        </form>
+                        </td>
+                        
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+        </div>
+        <div class="card-body">
+            {{ $patients->links() }}
+        </div>
+
+    </div>
     </div>
 
-    <div class="container mt--10 pb-5"></div>
+    
 @endsection
