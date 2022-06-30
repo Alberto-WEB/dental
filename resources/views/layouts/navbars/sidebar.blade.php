@@ -106,11 +106,15 @@
                     </div>
                 </li> --}}
 
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('patients') }}">
-                        <i class="fa-solid fa-hospital-user text-blue"></i> {{ __('Pacientes') }}
-                    </a>
-                </li>
+                @if (auth()->user()->user_type_id == 2)
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('patients.index') }}">
+                            <i class="fa-solid fa-hospital-user text-blue"></i> {{ __('Pacientes') }}
+                        </a>
+                    </li>
+                @endif
+
+                
                {{--  <li class="nav-item ">
                     <a class="nav-link" href="{{ route('map') }}">
                         <i class="ni ni-pin-3 text-orange"></i> {{ __('Maps') }}
