@@ -3,8 +3,9 @@
 @section('title', 'Lista de Pacientes')
 
 @section('content')
-    <div class="header bg-gradient-primary py-7 py-lg-8">
-       <div class="card shadow container">
+    <div class="header bg-gradient-primary py-5 py-lg-8">
+         <div class="container-fluid">
+            <div class="card shadow">
         <div class="card-header border-0">
         <div class="row align-items-center">
             <div class="col">
@@ -88,7 +89,9 @@
             {{ $patients->links() }}
         </div>
 
-    </div>
+        </div>
+        </div>
+         </div>
     </div>
 
     
