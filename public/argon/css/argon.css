@@ -6109,8 +6109,8 @@ input[type='button'].btn-block
     z-index: 1;
 
     color: #fff;
-    border-color: #5e72e4; 
-    background-color: #5e72e4;
+    border-color: #0B4271; 
+    background-color: #0B4271;
 }
 
 .page-item.disabled .page-link
@@ -16397,13 +16397,13 @@ button.section-darker:focus
 
 .text-blue
 {
-    color: #5e72e4 !important;
+    color: #0B4271 !important;
 }
 
 a.text-blue:hover,
 a.text-blue:focus
 {
-    color: #324cdd !important;
+    color: #0B4271 !important;
 }
 
 .text-indigo
