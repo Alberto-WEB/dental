@@ -12,7 +12,7 @@
             <h3 class="mb-0">Lista Pacientes</h3>
             </div>
             <div class="col text-right">
-            <a href="{{ url('/pacientes') }}" class="btn btn-sm btn-success">Nuevo Paciente</a>
+            <a href="{{ url('/patients/create') }}" class="btn btn-sm btn-success">Nuevo Paciente</a>
             </div>
         </div>
         </div>
@@ -28,9 +28,9 @@
                 <th scope="col">Sexo</th>
                 <th scope="col">Direccion</th>
                 <th scope="col">Estatus Civil</th>
-                <th scope="col">Religion</th>
+                {{-- <th scope="col">Religion</th>
                 <th scope="col">Ocupacion</th>
-                <th scope="col">Telefono</th>
+                <th scope="col">Telefono</th> --}}
                 <th scope="col" class="sort" data-sort="status">Estatus</th>
                 <th scope="col">Opciones</th>
             </tr>
@@ -56,7 +56,7 @@
                         <td>
                             {{ $patient->civil_status }}
                         </td>
-                        <td>
+                       {{--  <td>
                             {{ $patient->religion }}
                         </td>
                         <td>
@@ -64,7 +64,7 @@
                         </td>
                         <td>
                             {{ $patient->phone }}
-                        </td>
+                        </td> --}}
                         <td>
                             <span class="badge badge-dot mr-4">
                                 <i class="bg-success"></i>
@@ -73,6 +73,7 @@
                         </td>
                         <td>
                         <form action="{{ url('/pacientes/'.$patient->id) }}" method="POST">
+                            <button type="submit" class="btn btn-sm btn-default">Ver</button>
                             @csrf
                             @method('DELETE')
                             <a href="{{ url('/pacientes/'.$patient->id.'/edit') }}" class="btn btn-sm btn-primary">Editar</a>
