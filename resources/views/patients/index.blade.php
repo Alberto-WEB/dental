@@ -8,7 +8,7 @@
         <div class="card-header border-0">
         <div class="row align-items-center">
             <div class="col">
-            <h3 class="mb-0">Nuevo Paciente</h3>
+            <h3 class="mb-0">Lista Pacientes</h3>
             </div>
             <div class="col text-right">
             <a href="{{ url('/pacientes') }}" class="btn btn-sm btn-success">Nuevo Paciente</a>
@@ -30,7 +30,7 @@
                 <th scope="col">Religion</th>
                 <th scope="col">Ocupacion</th>
                 <th scope="col">Telefono</th>
-                <th scope="col">Estatus</th>
+                <th scope="col" class="sort" data-sort="status">Estatus</th>
                 <th scope="col">Opciones</th>
             </tr>
             </thead>
@@ -65,7 +65,10 @@
                             {{ $patient->phone }}
                         </td>
                         <td>
-                            {{ $patient->status }}
+                            <span class="badge badge-dot mr-4">
+                                <i class="bg-success"></i>
+                                <span class="status">{{ $patient->status }}</span>
+                            </span>
                         </td>
                         <td>
                         <form action="{{ url('/pacientes/'.$patient->id) }}" method="POST">
