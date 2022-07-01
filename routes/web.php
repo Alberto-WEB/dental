@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Dentist\PatientController;
+use App\Http\Controllers\Patient\PatientController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -29,4 +29,5 @@ Route::middleware(['verified', 'auth'])->group(function () {
 //CRUD de pacientes
 Route::middleware(['verified', 'auth', 'dentist'])->group(function () {
 	Route::get('/patients', [PatientController::class, 'index'])->name('patients.index');
+	Route::get('/patients/create', [PatientController::class, 'create'])->name('patients.create');
 });
