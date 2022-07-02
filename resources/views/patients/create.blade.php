@@ -71,8 +71,7 @@
                     </div>
                 </div>
                
-
-                <button type="submit" class="btn btn-sm btn-primary">Crear paciente</button>
+                <button type="submit" class="btn btn-sm btn-primary mt-3">Crear paciente</button>
             </form>
         </div>
 
