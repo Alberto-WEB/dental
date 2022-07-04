@@ -10,6 +10,12 @@
                 <div class="card bg-secondary shadow border-0">
                     
                     <div class="card-body px-lg-5 py-lg-5">
+
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
                        
                         <form role="form" method="POST" action="{{ route('register') }}">
                             @csrf

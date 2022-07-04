@@ -41,7 +41,7 @@
                                 @endif
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary my-4">{{ __('Enviar enlace de restablecimiento de contraseña') }}</button>
+                                <button type="submit" class="btn btn-primary my-4">{{ __('Enviar enlace para nueva contraseña') }}</button>
                             </div>
                         </form>
                     </div>

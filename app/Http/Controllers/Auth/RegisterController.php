@@ -70,7 +70,7 @@ class RegisterController extends Controller
             $dentist->phone = $request->phone;
             $dentist->save();
 
-            Alert::success('Felicidades', 'Tu registro se ha realizado con exito');
+            Alert::success('Felicidades', 'Tu registro se ha realizado con exito, revisa tu email');
 
             return view('auth.register');
 
