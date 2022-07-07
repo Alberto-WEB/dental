@@ -16,15 +16,15 @@ return new class extends Migration
         Schema::create('no_personal_pathologicals', function (Blueprint $table) {
             $table->id();
             $table->boolean('drugs');
-            $table->string('drugs_take');
+            $table->string('drugs_take')->nullable();
             $table->boolean('smoke');
-            $table->string('smoke_frequency');
+            $table->string('smoke_frequency')->nullable();
             $table->boolean('alcohol');
-            $table->string('alcohol_frequency');
+            $table->string('alcohol_frequency')->nullable();
             $table->boolean('pregnant');
-            $table->string('pregnant_weeks');
-            $table->string('pregnancy_number');
-            $table->date('d_p_p');
+            $table->string('pregnant_weeks')->nullable();
+            $table->string('pregnancy_number')->nullable();
+            $table->date('d_p_p')->nullable();
             $table->timestamps();
 
             $table->unsignedBigInteger('patient_id');

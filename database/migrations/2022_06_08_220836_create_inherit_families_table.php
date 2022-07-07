@@ -16,19 +16,19 @@ return new class extends Migration
         Schema::create('inherit_families', function (Blueprint $table) {
             $table->id();
             $table->boolean('f_alive');
-            $table->string('f_sicks');
+            $table->string('f_sicks')->nullable();
             $table->boolean('m_alive');
-            $table->string('m_sicks');
+            $table->string('m_sicks')->nullable();
             $table->boolean('pa_gf_alive');
-            $table->string('pa_gf_sicks');
+            $table->string('pa_gf_sicks')->nullable();
             $table->boolean('ma_gm_alive');
-            $table->string('ma_gm_sicks');
-            $table->string('others_alive');
-            $table->string('others_sicks');
+            $table->string('ma_gm_sicks')->nullable();
+            $table->string('others_alive')->nullable();
+            $table->string('others_sicks')->nullable();
             $table->boolean('pa_gm_alive');
-            $table->string('pa_gm_sicks');
+            $table->string('pa_gm_sicks')->nullable();
             $table->boolean('ma_gf_alive');
-            $table->string('ma_gf_sicks');
+            $table->string('ma_gf_sicks')->nullable();
             $table->timestamps();
 
             $table->unsignedBigInteger('patient_id');
