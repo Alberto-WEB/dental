@@ -19,14 +19,14 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-   
+
     protected $redirectTo = RouteServiceProvider::HOME;
 
     public function __construct()
     {
         $this->middleware('guest');
     }
-/* 
+    /* 
      protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -36,12 +36,12 @@ class RegisterController extends Controller
         ]);
     }
  */
-    
+
     protected function register(RegisterDentistRequest $request)
-    {   
-        
+    {
+
         try {
-            
+
             $user = new User;
             $user->user_type_id = UserTypes::DENTIST;
             $user->name = $request->name;
@@ -70,10 +70,12 @@ class RegisterController extends Controller
             $dentist->phone = $request->phone;
             $dentist->save();
 
-            Alert::success('Felicidades', 'Tu registro se ha realizado con exito, revisa tu email');
+            $notificationRegister = 'El dentista se ha registrado correctamente, revisa tu email.';
+            return redirect('/login')->with(compact('notificationRegister'));
 
-            return view('auth.register');
+            /*  Alert::success('Felicidades', 'Tu registro se ha realizado con exito, revisa tu email');
 
+            return view('auth.register'); */
         } catch (\Exception $exception) {
             Log::debug($exception->getMessage());
             return response()([
@@ -87,6 +89,5 @@ class RegisterController extends Controller
                 ]
             ], 500);
         }
-
     }
 }

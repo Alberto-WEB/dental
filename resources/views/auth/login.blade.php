@@ -9,6 +9,16 @@
                 <div class="card bg-secondary shadow border-0">
                     
                     <div class="card-body px-lg-5 py-lg-5">
+
+                         @if (session('notificationRegister'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+                                {{ session('notificationRegister') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif
                       
                         <form role="form" method="POST" action="{{ route('login') }}">
                             @csrf

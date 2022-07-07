@@ -16,6 +16,18 @@
             </div>
         </div>
         </div>
+
+        <div class="card-body">
+            @if (session('notification'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+                    {{ session('notification') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+        </div>
         
         <div class="table-responsive">
         <!-- Projects table -->
@@ -27,62 +39,68 @@
                 <th scope="col">Edad</th>
                 <th scope="col">Sexo</th>
                 <th scope="col">Direccion</th>
-                <th scope="col">Estatus Civil</th>
+                <th scope="col">Telefono</th>
                 {{-- <th scope="col">Religion</th>
                 <th scope="col">Ocupacion</th>
-                <th scope="col">Telefono</th> --}}
+                <th scope="col">Estatus Civil</th> --}}
                 <th scope="col" class="sort" data-sort="status">Estatus</th>
                 <th scope="col">Opciones</th>
             </tr>
             </thead>
             <tbody>
-                @foreach ($patients as $patient)
+                @if ($patients->count())
+                    @foreach ($patients as $patient)
+                        <tr>
+                            <th scope="row">
+                                {{ $patient->name }}
+                            </th>
+                            <td>
+                                {{ $patient->email_patient }}
+                            </td>
+                            <td>
+                                {{ $patient->age }}
+                            </td>
+                            <td>
+                                {{ $patient->sex }}
+                            </td>
+                            <td>
+                                {{ $patient->address }}
+                            </td>
+                            <td>
+                                {{ $patient->phone }}
+                            </td>
+                        {{--  <td>
+                                {{ $patient->religion }}
+                            </td>
+                            <td>
+                                {{ $patient->occupation }}
+                            </td>
+                            <td>
+                                {{ $patient->civil_status }}
+                            </td> --}}
+                            <td>
+                                <span class="badge badge-dot mr-4">
+                                    <i class="bg-success"></i>
+                                    <span class="status">{{ $patient->status }}</span>
+                                </span>
+                            </td>
+                            <td>
+                            <form action="{{ url('/pacientes/'.$patient->id) }}" method="POST">
+                                <button type="submit" class="btn btn-sm btn-default">Ver</button>
+                                @csrf
+                                @method('DELETE')
+                                <a href="{{ url('/pacientes/'.$patient->id.'/edit') }}" class="btn btn-sm btn-primary">Editar</a>
+                                <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                            </form>
+                            </td>
+                            
+                        </tr>
+                    @endforeach
+                @else
                     <tr>
-                        <th scope="row">
-                            {{ $patient->name }}
-                        </th>
-                        <td>
-                            {{ $patient->email_patient }}
-                        </td>
-                        <td>
-                            {{ $patient->age }}
-                        </td>
-                        <td>
-                            {{ $patient->sex }}
-                        </td>
-                        <td>
-                            {{ $patient->address }}
-                        </td>
-                        <td>
-                            {{ $patient->civil_status }}
-                        </td>
-                       {{--  <td>
-                            {{ $patient->religion }}
-                        </td>
-                        <td>
-                            {{ $patient->occupation }}
-                        </td>
-                        <td>
-                            {{ $patient->phone }}
-                        </td> --}}
-                        <td>
-                            <span class="badge badge-dot mr-4">
-                                <i class="bg-success"></i>
-                                <span class="status">{{ $patient->status }}</span>
-                            </span>
-                        </td>
-                        <td>
-                        <form action="{{ url('/pacientes/'.$patient->id) }}" method="POST">
-                            <button type="submit" class="btn btn-sm btn-default">Ver</button>
-                            @csrf
-                            @method('DELETE')
-                            <a href="{{ url('/pacientes/'.$patient->id.'/edit') }}" class="btn btn-sm btn-primary">Editar</a>
-                            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
-                        </form>
-                        </td>
-                        
+                        <td colspan="4">No hay pacientes registrados</td>
                     </tr>
-                @endforeach
+                @endif
             </tbody>
         </table>
         </div>
