@@ -19458,7 +19458,7 @@ a.btn-icon-only
 
 .custom-radio .custom-control-input:checked ~ .custom-control-label::before
 {
-    border-color: #5e72e4;
+    border-color: #0B4271;
 }
 
 .custom-radio .custom-control-input:checked ~ .custom-control-label::after
