@@ -31,4 +31,7 @@ Route::middleware(['verified', 'auth', 'dentist'])->group(function () {
 	Route::get('/patients', [PatientController::class, 'index'])->name('patients.index');
 	Route::get('/patients/create', [PatientController::class, 'create'])->name('patients.create');
 	Route::post('/patients/save', [PatientController::class, 'store'])->name('patients.store');
+	Route::get('/patients/{id}/edit', [PatientController::class, 'edit'])->name('patients.edit');
+	Route::put('/patients/{id}{idinheritFamily}{idDentalHistory}{idNoPersonalPathological}{idPersonalPathological}', [PatientController::class, 'update'])->name('patients.update');
+	Route::delete('/patients/{id}', [PatientController::class, 'destroy'])->name('patients.destroy');
 });

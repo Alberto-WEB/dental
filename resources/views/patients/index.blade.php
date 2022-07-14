@@ -42,8 +42,8 @@
                 <th scope="col">Telefono</th>
                 {{-- <th scope="col">Religion</th>
                 <th scope="col">Ocupacion</th>
-                <th scope="col">Estatus Civil</th> --}}
-                <th scope="col" class="sort" data-sort="status">Estatus</th>
+                <th scope="col">Estatus Civil</th> 
+                <th scope="col" class="sort" data-sort="status">Estatus</th>--}}
                 <th scope="col">Opciones</th>
             </tr>
             </thead>
@@ -78,18 +78,17 @@
                             <td>
                                 {{ $patient->civil_status }}
                             </td> --}}
-                            <td>
+                            {{-- <td>
                                 <span class="badge badge-dot mr-4">
                                     <i class="bg-success"></i>
                                     <span class="status">{{ $patient->status }}</span>
                                 </span>
-                            </td>
+                            </td> --}}
                             <td>
-                            <form action="{{ url('/pacientes/'.$patient->id) }}" method="POST">
-                                <button type="submit" class="btn btn-sm btn-default">Ver</button>
+                            <form action="{{ url('/patients/'.$patient->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <a href="{{ url('/pacientes/'.$patient->id.'/edit') }}" class="btn btn-sm btn-primary">Editar</a>
+                                <a href="{{ url('/patients/'.$patient->id.'/edit') }}" class="btn btn-sm btn-primary">Editar</a>
                                 <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                             </form>
                             </td>
