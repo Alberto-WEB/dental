@@ -78,16 +78,7 @@ class RegisterController extends Controller
             return view('auth.register'); */
         } catch (\Exception $exception) {
             Log::debug($exception->getMessage());
-            return response()([
-                'msg' => 'BAD',
-                'success' => false,
-                'data' => [
-                    'msgError' => 'Server error'
-                ],
-                'exeptions' => [
-                    'msgError' => $exception->getMessage()
-                ]
-            ], 500);
+            return view('errors.500');
         }
     }
 }
