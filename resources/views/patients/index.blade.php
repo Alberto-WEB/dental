@@ -3,7 +3,7 @@
 @section('title', 'Lista de Pacientes')
 
 @section('content')
-    <div class="header bg-gradient-primary py-5 py-lg-8">
+    <div class="header bg-gradient-primary py-5 py-lg-7 py-sm-7">
          <div class="container-fluid">
             <div class="card shadow">
         <div class="card-header border-0">
