@@ -24,7 +24,7 @@
 				<h1>5<span></span>0</h1>
 			</div>
 			<h2>Error en Servidor</h2>
-            <p>Lo sentimos hubo un error inesperado, pongase en contacto con el adminstrador.</p>
+            <p>Lo sentimos hubo un error inesperado, intentalo de nuevo o pongase en contacto con el adminstrador.</p>
 			<a href="/home">Volver</a>
 		</div>
 	</div>
