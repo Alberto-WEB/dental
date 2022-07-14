@@ -10,13 +10,17 @@ class InheritFamily extends Model
     use HasFactory;
 
     protected $fillable = [
-        'f_alive',
         'f_sicks',
-        'm_alive',
         'm_sicks',
+        'f_alive',
+        'm_alive',
         'pa_gf_alive',
-        'pa_gf_sicks',
         'ma_gm_alive',
+        'pa_gm_alive',
+        'ma_gf_alive',
+        'pa_gf_sicks',
+        'pa_gm_sicks',
+        'ma_gf_sicks',
         'ma_gm_sicks',
         'others_alive',
         'others_sicks',
@@ -32,9 +36,10 @@ class InheritFamily extends Model
         'ma_gf_alive' => 'boolean'
     ];
 
-    
+
     //relacion de muchos a uno (inversa)
-    public function patient(){
-        return $this->belongsTo('App\Patient', 'patient_id');
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class, 'patient_id');
     }
 }

@@ -24,18 +24,20 @@ class Service extends Model
     ];
 
     //relacion de uno a muchos (inversa)
-    public function dentist() {
-        return $this->belongsTo('App\Dentist');
+    public function dentist()
+    {
+        return $this->belongsTo(Dentist::class);
     }
 
     //relacion de uno a muchos
-    public function consumable() {
-        return $this->hasMany('App\Consumable');
+    public function consumable()
+    {
+        return $this->hasMany(Consumable::class);
     }
 
     //relacion de uno a muchos (inversa)
-    public function expencehour() {
-        return $this->belongsTo('App\ExpenceHour');
+    public function expencehour()
+    {
+        return $this->belongsTo(ExpenceHour::class);
     }
-
 }

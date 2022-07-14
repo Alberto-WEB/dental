@@ -23,7 +23,8 @@ class Transaction extends Model
     ];
 
     //relacion de uno a muchos (inversa)
-    public function user(){
-        return $this->belongsTo('App\Transaction');
+    public function user()
+    {
+        return $this->belongsTo(Transaction::class);
     }
 }

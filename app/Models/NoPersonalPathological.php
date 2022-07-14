@@ -30,9 +30,10 @@ class NoPersonalPathological extends Model
         'pregnant' => 'boolean'
     ];
 
-    
+
     //relacion de muchos a uno (inversa)
-    public function patient(){
-        return $this->belongsTo('App\Patient', 'patient_id');
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class, 'patient_id');
     }
 }

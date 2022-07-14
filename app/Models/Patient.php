@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Patient extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'name',
@@ -31,44 +32,37 @@ class Patient extends Model
     //relacion de muchos a uno (inversa)
     public function dentist()
     {
-        return $this->belongsTo('App\Dentist', 'dentist_id');
+        return $this->belongsTo(Dentist::class, 'dentist_id');
     }
 
     //relacion de uno a muchos
     public function quote()
     {
-        return $this->hasMany('App\Quote');
+        return $this->hasMany(Quote::class);
     }
-
-    //relacion de uno a muchos
-    public function question()
-    {
-        return $this->hasMany('App\Question');
-    }
-
 
     //relacion de uno a muchos
     public function inheritFamily()
     {
-        return $this->hasMany('App\InheritFamily');
+        return $this->hasMany(InheritFamily::class);
     }
 
 
     //relacion de uno a muchos
     public function dentalHistory()
     {
-        return $this->hasMany('App\DentalHistory');
+        return $this->hasMany(DentalHistory::class);
     }
 
     //relacion de uno a muchos
     public function noPersonalPathological()
     {
-        return $this->hasMany('App\NoPersonalPathological');
+        return $this->hasMany(NoPersonalPathological::class);
     }
 
     //relacion de uno a muchos
     public function personalPathological()
     {
-        return $this->hasMany('App\PersonalPathological');
+        return $this->hasMany(PersonalPathological::class);
     }
 }

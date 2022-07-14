@@ -18,7 +18,8 @@ class Consumable extends Model
     ];
 
     //relacion de uno a muchos (inversa)
-    public function service() {
-		return $this->belongsTo('App\Service');
-	}
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
 }

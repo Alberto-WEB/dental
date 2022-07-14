@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Dentist;
+use App\Models\UserType;
+use App\Models\Transaction;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -24,7 +27,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'img_perfil',
         'user_type_id'
-        
+
     ];
 
     /**
@@ -37,7 +40,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'remember_token',
     ];
 
-   /*  public function sendPasswordResetNotification($token)
+    /*  public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPasswordNotification($token, $this->email));
 
@@ -53,18 +56,20 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     //relacion uno a muchos
-    public function dentist() {
-        return $this->hasMany('App\Dentist');
+    public function dentist()
+    {
+        return $this->hasMany(Dentist::class);
     }
 
     //relacion de uno a muchos (inversa)
-    public function usertype(){
-        return $this->belongsTo('App\UserType');
+    public function usertype()
+    {
+        return $this->belongsTo(UserType::class);
     }
 
     //relacion de muchos a uno
-    public function transaction() {
-        return $this->hasMany('App\Transaction');
+    public function transaction()
+    {
+        return $this->hasMany(Transaction::class);
     }
-
 }

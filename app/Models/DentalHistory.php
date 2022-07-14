@@ -43,9 +43,9 @@ class DentalHistory extends Model
         'has_ulcers',
         'when_has_ulcers',
         'patient_id'
-];
+    ];
 
-protected $casts = [
+    protected $casts = [
         'medications' => 'boolean',
         'dental_trauma' => 'boolean',
         'speaking_difficulty' => 'boolean',
@@ -61,11 +61,12 @@ protected $casts = [
         'abnormal_under_tongue' => 'boolean',
         'injury_has_pus' => 'boolean',
         'has_ulcers' => 'boolean'
-];
+    ];
 
 
-//relacion de muchos a uno (inversa)
-public function patient(){
-    return $this->belongsTo('App\Patient', 'patient_id');
-}
+    //relacion de muchos a uno (inversa)
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class, 'patient_id');
+    }
 }

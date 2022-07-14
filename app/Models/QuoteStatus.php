@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Quote;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class QuoteStatus extends Model
 {
@@ -16,7 +17,8 @@ class QuoteStatus extends Model
     ];
 
     //relacion de uno a muchos
-    public function quote() {
-        return $this->hasMany('App\Quote');
+    public function quote()
+    {
+        return $this->hasMany(Quote::class);
     }
 }

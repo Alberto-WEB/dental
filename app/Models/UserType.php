@@ -16,9 +16,10 @@ class UserType extends Model
     ];
 
 
-    
+
     //relacion uno a muchos
-    public function dentist() {
-        return $this->hasMany('App\User');
+    public function dentist()
+    {
+        return $this->hasMany(User::class);
     }
 }

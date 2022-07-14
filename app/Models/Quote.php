@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\QuoteStatus;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Quote extends Model
 {
@@ -15,12 +16,14 @@ class Quote extends Model
     ];
 
     //relacion de muchos a uno
-    public function patient() {
-        return $this->hasMany('App\Patient');
+    public function patient()
+    {
+        return $this->hasMany(Patient::class);
     }
 
     //relacion de uno de muchos (inversa)
-    public function quotestatus() {
-        return $this->belongsTo('App\QuoteStatus');
+    public function quotestatus()
+    {
+        return $this->belongsTo(QuoteStatus::class);
     }
 }

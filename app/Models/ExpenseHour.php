@@ -15,7 +15,8 @@ class ExpenseHour extends Model
     ];
 
     //relacion de uno a muchos
-    public function service() {
-		return $this->hasMany('App\Service');
-	}
+    public function service()
+    {
+        return $this->hasMany(Service::class);
+    }
 }

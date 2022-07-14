@@ -70,7 +70,7 @@ class PersonalPathological extends Model
         'blood_transfution',
         'blood_transfution_reason',
         'patient_id'
-];
+    ];
 
     protected $casts = [
         'sarampion' => 'boolean',
@@ -96,9 +96,10 @@ class PersonalPathological extends Model
         'surgeries' => 'boolean'
     ];
 
-     
-//relacion de muchos a uno (inversa)
-public function patient(){
-    return $this->belongsTo('App\Patient', 'patient_id');
-}
+
+    //relacion de muchos a uno (inversa)
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class, 'patient_id');
+    }
 }
