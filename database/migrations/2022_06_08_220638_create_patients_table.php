@@ -24,7 +24,8 @@ return new class extends Migration
             $table->string('occupation');
             $table->string('phone');
             $table->string('email_patient')->unique();
-            $table->enum('status', ['ACTIVE', 'INACTIVE', 'DELETED'])->default('ACTIVE');
+            $table->softDeletes();
+            //$table->enum('status', ['ACTIVE', 'INACTIVE', 'DELETED'])->default('ACTIVE');
             $table->timestamps();
 
             $table->unsignedBigInteger('dentist_id');
