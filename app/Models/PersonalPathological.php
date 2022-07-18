@@ -55,8 +55,8 @@ class PersonalPathological extends Model
         'cancer_status',
         'other_actual_sicks',
         'wath_other_actual_sicks',
-        'wath_other_actual_six_medicaments',
-        'wath_other_actual_six_status',
+        'wath_other_actual_sicks_medicaments',
+        'wath_other_actual_sicks_status',
         'alergies',
         'blood_coagulation',
         'kidney_problems', //50

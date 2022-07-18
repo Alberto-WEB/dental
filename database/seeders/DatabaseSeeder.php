@@ -23,7 +23,11 @@ class DatabaseSeeder extends Seeder
             QuoteStatusSeeder::class,
             UserSeeder::class,
             DentistSeeder::class,
-            PatientSeeder::class,
+            /* PatientSeeder::class,
+            InheritFamilySeeder::class,
+            DentalHistorySeeder::class,
+            NoPersonalPathologicalSeeder::class,
+            PersonalPathologicalSeeder::class */
             //TypeMedicalHistorySeeder::class,
             //QuestionSeeder::class
         ]);
