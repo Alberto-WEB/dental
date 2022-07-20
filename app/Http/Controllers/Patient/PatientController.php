@@ -213,7 +213,35 @@ class PatientController extends Controller
 
     public function show($id)
     {
-        //
+
+        $patient = Patient::find($id);
+
+        $inheritFamily = DB::table('patients as p')
+            ->join('inherit_families as if', 'p.id', '=', 'if.patient_id')
+            ->where('if.patient_id', $patient->id)
+            ->get('if.*');
+
+        $DentalHistory = DB::table('patients as p')
+            ->join('dental_histories as dh', 'p.id', '=', 'dh.patient_id')
+            ->where('dh.patient_id', $patient->id)
+            ->get('dh.*');
+
+        $NoPersonalPathological = DB::table('patients as p')
+            ->join('no_personal_pathologicals as npp', 'p.id', '=', 'npp.patient_id')
+            ->where('npp.patient_id', $patient->id)
+            ->get('npp.*');
+
+        $PersonalPathological = DB::table('patients as p')
+            ->join('personal_pathologicals as pp', 'p.id', '=', 'pp.patient_id')
+            ->where('pp.patient_id', $patient->id)
+            ->get('pp.*');
+
+        //dd($patient);
+
+        //dd($inheritFamily);
+
+
+        return view('patients.show', compact('patient', 'inheritFamily', 'DentalHistory', 'NoPersonalPathological', 'PersonalPathological'));
     }
 
 
@@ -256,7 +284,7 @@ class PatientController extends Controller
 
             $patient = Patient::find($id);
 
-            //dd($patient);
+            //showdd($patient);
 
             //update to section patient
             $patient->name = $request->name;

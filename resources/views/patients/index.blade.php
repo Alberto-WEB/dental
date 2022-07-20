@@ -88,6 +88,7 @@
                             <form action="{{ url('/patients/'.$patient->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
+                                <a href="{{ url('/patients/'.$patient->id.'/show') }}" class="btn btn-sm btn-default">Ver</a>
                                 <a href="{{ url('/patients/'.$patient->id.'/edit') }}" class="btn btn-sm btn-primary">Editar</a>
                                 <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                             </form>
