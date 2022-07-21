@@ -467,4 +467,14 @@ class PatientController extends Controller
             return view('errors.500');
         }
     }
+
+    public function filter_search(Request $request)
+    {
+        $patients = Patient::search($request->searchText)
+
+            ->paginate(10);
+
+        //dd($patients);
+        return view('patients.index', compact('patients'));
+    }
 }

@@ -8,14 +8,28 @@
             <div class="card shadow">
         <div class="card-header border-0">
         <div class="row align-items-center">
-            <div class="col">
+            <div class="col-sm-4">
             <h3 class="mb-0">Lista Pacientes</h3>
             </div>
-            <div class="col text-right">
+            <div class="col-sm-4 text-left">
+                <form action="{{ url('/filter/search') }}" method="post">
+                    @csrf
+                    <div class="input-group">
+                        <input type="text" name="searchText" class="form-control" placeholder="Buscar paciente">
+                        <div class="input-group-append">
+                        <button type="submit" class="btn btn-secondary" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        </div>
+                    </div>
+                </form>
+               {{--  @livewire('patient-search') --}}
+            </div>
+            <div class="col-sm-4 text-right">
             <a href="{{ url('/patients/create') }}" class="btn btn-sm btn-success">Nuevo Paciente</a>
             </div>
         </div>
-        </div>
+        </div>      
 
         <div class="card-body">
             @if (session('notification'))
