@@ -247,6 +247,8 @@ class PatientController extends Controller
 
     public function edit($id)
     {
+        //$this->authorize('author', Patient::class);
+
         $patient = Patient::find($id);
 
         $inheritFamily = DB::table('patients as p')
@@ -470,8 +472,9 @@ class PatientController extends Controller
 
     public function filter_search(Request $request)
     {
-        $patients = Patient::search($request->searchText)
 
+        $patients = Patient::search($request->searchText)
+            /* ->where('dentist_id', '=', Auth::user()->id) */
             ->paginate(10);
 
         //dd($patients);

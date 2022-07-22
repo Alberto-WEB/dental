@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Laravel\Scout\Searchable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -29,6 +30,12 @@ class Patient extends Model
         'no_personal_pathologicals_id',
         'personal_pathologicals_id' */
     ];
+
+    public function scopePatients($query)
+    {
+        return $query->where('dentist_id', '=', Auth::user()->id);
+    }
+
 
     //relacion de muchos a uno (inversa)
     public function dentist()
