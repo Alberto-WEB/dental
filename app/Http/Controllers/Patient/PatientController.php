@@ -250,7 +250,7 @@ class PatientController extends Controller
     {
         //$this->authorize('author', 'id');
 
-        $patient = Patient::find($id);
+        $patient = Patient::findOrFail($id);
 
         $inheritFamily = DB::table('patients as p')
             ->join('inherit_families as if', 'p.id', '=', 'if.patient_id')
@@ -285,7 +285,7 @@ class PatientController extends Controller
     {
         try {
 
-            $patient = Patient::find($id);
+            $patient = Patient::findOrFail($id);
 
             //showdd($patient);
 

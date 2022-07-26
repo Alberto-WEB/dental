@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Patient\PatientController;
-use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
@@ -35,6 +36,5 @@ Route::middleware(['verified', 'auth', 'dentist'])->group(function () {
 	Route::get('/patients/{id}/show', [PatientController::class, 'show'])->name('patients.show');
 	Route::put('/patients/{id}{idinheritFamily}{idDentalHistory}{idNoPersonalPathological}{idPersonalPathological}', [PatientController::class, 'update'])->name('patients.update');
 	Route::delete('/patients/{id}', [PatientController::class, 'destroy'])->name('patients.destroy');
-	//search post
 	//Route::post('/filter/search', [PatientController::class, 'filter_search'])->name('filter_search');
 });
