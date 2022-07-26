@@ -24,6 +24,8 @@
 
         <link type="text/css" href="{{ asset('argon') }}/css/style.css" rel="stylesheet">
 
+         @livewireStyles
+
     </head>
     <body class="{{ $class ?? '' }}">
         @include('sweetalert::alert')
@@ -42,6 +44,8 @@
         @guest()
             @include('layouts.footers.guest')
         @endguest
+
+         @livewireScripts
 
         <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
         <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
