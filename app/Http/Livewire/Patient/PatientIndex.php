@@ -15,6 +15,11 @@ class PatientIndex extends Component
 
     public $search;
 
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
         $patients = Patient::where('dentist_id', auth()->user()->id)
