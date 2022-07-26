@@ -24,12 +24,12 @@ class PatientController extends Controller
 
     public function index()
     {
-        $patients = Patient::where('dentist_id', auth()->user()->id)->paginate();
+        //$patients = Patient::where('dentist_id', auth()->user()->id)->paginate();
         /*  $patients = Patient::orderBy('id', 'DESC')
             ->where('dentist_id', '=', Auth::user()->id)
             ->paginate(10); */
 
-        return view('patients.index', compact('patients'));
+        return view('patients.index');
     }
 
 
