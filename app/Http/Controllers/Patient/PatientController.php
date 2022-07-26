@@ -451,16 +451,17 @@ class PatientController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(Patient $patient)
     {
         try {
 
-            Patient::find($id)->delete();
+            //Patient::find($id)->delete();
 
             //$patient = Patient::find($id);
             //dd($patient);
 
-            //$patient->delete();
+            $patient->delete();
+
             $notification = 'El paciente se elimino correctamente';
             return redirect('/patients')->with(compact('notification'));
 

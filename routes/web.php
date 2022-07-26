@@ -35,6 +35,6 @@ Route::middleware(['verified', 'auth', 'dentist'])->group(function () {
 	Route::get('/patients/{id}/edit', [PatientController::class, 'edit'])->name('patients.edit');
 	Route::get('/patients/{id}/show', [PatientController::class, 'show'])->name('patients.show');
 	Route::put('/patients/{id}{idinheritFamily}{idDentalHistory}{idNoPersonalPathological}{idPersonalPathological}', [PatientController::class, 'update'])->name('patients.update');
-	Route::delete('/patients/{id}', [PatientController::class, 'destroy'])->name('patients.destroy');
+	Route::delete('/patients/{patient}', [PatientController::class, 'destroy'])->name('patients.destroy');
 	//Route::post('/filter/search', [PatientController::class, 'filter_search'])->name('filter_search');
 });

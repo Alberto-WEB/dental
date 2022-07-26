@@ -99,7 +99,7 @@
                                 </span>
                             </td> --}}
                             <td>
-                            <form action="{{ url('/patients/'.$patient->id) }}" method="POST">
+                            <form action="{{ route('patients.destroy', $patient) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <a href="{{ url('/patients/'.$patient->id.'/show') }}" class="btn btn-sm btn-default">Ver</a>

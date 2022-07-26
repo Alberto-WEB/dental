@@ -30,6 +30,8 @@ class PatientIndex extends Component
             ->where('dentist_id', '=', Auth::user()->id)
             ->paginate(10); */
 
+        //dd($patients);
+
         return view('livewire.patient.patient-index', compact('patients'));
     }
 }
