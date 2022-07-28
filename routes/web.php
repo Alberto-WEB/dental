@@ -18,6 +18,8 @@ route::middleware(['verified'])->group(function () {
 
 //Registro del Dentista
 Route::post('/register', [RegisterController::class, 'register']);
+Route::view('/terms-and-conditions', 'terms-and-conditions')->name('user.tyc');
+Route::view('/about', 'about')->name('user.about');
 
 //autenticacion dentista
 Route::middleware(['verified', 'auth'])->group(function () {

@@ -7,10 +7,13 @@
     <div class="col-xl-6">
         <ul class="nav nav-footer justify-content-center justify-content-xl-end">
             <li class="nav-item">
-                <a href="#" class="nav-link" target="_blank">Nosotros</a>
+                <a href="{{ route('user.about') }}" class="nav-link">Nosotros</a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link" target="_blank">Blog</a>
+                <a href="http://blog.siur.mx/" class="nav-link" target="_blank">Blog</a>
+            </li>
+             <li class="nav-item">
+                <a href="{{ route('user.tyc') }}" class="nav-link">Terminos y Condiciones</a>
             </li>
         </ul>
     </div>
