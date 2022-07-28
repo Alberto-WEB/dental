@@ -12,9 +12,9 @@ class PatientPolicy
     use HandlesAuthorization;
 
 
-    public function author(Dentist $dentist, Patient $patient)
+    public function author(User $user, Patient $patient)
     {
-        if ($dentist->id == $patient->dentist_id) {
+        if ($user->id === $patient->dentist_id) {
             return true;
         } else {
             return false;

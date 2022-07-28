@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Models\PersonalPathological;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use App\Models\NoPersonalPathological;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\Patient\RegisterPatientRequest;
@@ -216,6 +217,7 @@ class PatientController extends Controller
     {
 
         $patient = Patient::find($id);
+        $this->authorize('author', $patient);
 
         $inheritFamily = DB::table('patients as p')
             ->join('inherit_families as if', 'p.id', '=', 'if.patient_id')
@@ -248,9 +250,9 @@ class PatientController extends Controller
 
     public function edit($id)
     {
-        //$this->authorize('author', 'id');
-
+        //Gate::authorize('author', 'id');
         $patient = Patient::findOrFail($id);
+        $this->authorize('author', $patient);
 
         $inheritFamily = DB::table('patients as p')
             ->join('inherit_families as if', 'p.id', '=', 'if.patient_id')
@@ -286,8 +288,7 @@ class PatientController extends Controller
         try {
 
             $patient = Patient::findOrFail($id);
-
-            //showdd($patient);
+            $this->authorize('author', $patient);
 
             //update to section patient
             $patient->name = $request->name;
