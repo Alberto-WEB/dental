@@ -48,7 +48,7 @@ class RegisterController extends Controller
             $user->surname = $request->surname;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
-            $user->img_perfil = '';
+            $user->avatar = null;
             //$user->free_trial = 0;
             //$user->trial_ends_at = now()->addDays(10); //se debe insertar cuando agregue la tarjeta para que tenga su mes gratis
             $user->save();

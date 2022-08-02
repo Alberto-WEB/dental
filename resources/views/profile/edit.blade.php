@@ -14,18 +14,11 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-3 order-lg-2">
                             <div class="card-profile-image">
-                                
-                                @foreach ($users as $user)
-
-                                {{-- <img src="{{asset(($user->img_perfil ?? 'images/profile.png'))}}" class="rounded-circle" height="150" width="150" alt="avatar"> --}}
-                                
-                                    @if ($user->avatar != null)
-                                            <img src="{{ asset($user->avatar) }}" class="rounded-circle" height="150" width="150" alt="avatar">
+                                @if (Auth::user()->avatar != null)
+                                        <img src="{{ asset(Auth::user()->avatar) }}" class="rounded-circle" height="150" width="150" alt="avatar">
                                     @else 
-                                            <img src="{{ asset('images/profile.png') }}" class="rounded-circle" height="150" width="150" alt="avatar">
-                                    @endif
-                                   
-                                @endforeach
+                                        <img src="{{ asset('images/user.png') }}" class="rounded-circle" height="150" width="150" alt="avatar">
+                                @endif
                                 
                             </div>
                         </div>

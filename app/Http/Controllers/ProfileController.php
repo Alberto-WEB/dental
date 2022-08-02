@@ -17,9 +17,7 @@ class ProfileController extends Controller
      */
     public function edit()
     {
-        $users = User::all();
-        //dd($users);
-        return view('profile.edit', compact('users'));
+        return view('profile.edit');
     }
 
     /**

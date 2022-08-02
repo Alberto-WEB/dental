@@ -20,7 +20,11 @@
                 <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                            <img alt="Image placeholder" src="{{ asset(Auth::user()->avatar) }}" >
+                            @if (Auth::user()->avatar != null)
+                                    <img src="{{ asset(Auth::user()->avatar) }}" class="rounded-circle" height="35" width="150" alt="avatar">
+                                @else 
+                                    <img src="{{ asset('images/user.png') }}" class="rounded-circle" height="35" width="150" alt="avatar">
+                            @endif
                         </span>
                         <div class="media-body ml-2 d-none d-lg-block">
                             <span class="mb-0 text-sm  font-weight-bold">{{ auth()->user()->name }}</span>
