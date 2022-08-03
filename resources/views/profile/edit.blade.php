@@ -32,17 +32,18 @@
                     </div>
                     <div class="container text-center mt-6">
                         @livewire('patient.upload-photo')
-                       {{--  <form>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input">
-                                <label class="custom-file-label">Subir imagen</label>
-                            </div>
-                        </form> --}}
                     </div>
+                    
                     <div class="card-body pt-0 pt-md-4">
                         <div class="row">
                             <div class="col">
-                                <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+                                 <div class="text-center sm-5">
+                                    <h2>
+                                        {{ auth()->user()->name }} <span class="font-weight-light">{{ auth()->user()->surname }}</span>
+                                    </h2>
+                                </div>
+                                <div class="card-profile-stats d-flex justify-content-center mt-md-2">
+                                    
                                     <div>
                                         <span class="heading">22</span>
                                         <span class="description">{{ __('Pacientes') }}</span>
@@ -53,15 +54,13 @@
                                     </div>
                                     <div>
                                         <span class="heading">89</span>
-                                        <span class="description">{{ __('Comments') }}</span>
+                                        <span class="description">{{ __('Servicios') }}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="text-center">
-                            <h2>
-                                {{ auth()->user()->name }}<span class="font-weight-light">{{ auth()->user()->surname }}</span>
-                            </h2>
+                            
                            {{--  <div class="h5 font-weight-300">
                                 <i class="ni location_pin mr-2"></i>{{ __('Bucharest, Romania') }}
                             </div> --}}
@@ -72,7 +71,7 @@
                                 <i class="ni education_hat mr-2"></i>{{ auth()->user()->email }}
                             </div>
                             <hr class="my-4" />
-                            <p>{{ __('Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.') }}</p>
+                            {{-- <p>{{ __('Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.') }}</p> --}}
                             <a href="#">{{ __('Show more') }}</a>
                         </div>
                     </div>
