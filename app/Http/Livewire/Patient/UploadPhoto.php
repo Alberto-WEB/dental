@@ -17,7 +17,7 @@ class UploadPhoto extends Component
     public function save()
     {
         $this->validate([
-            'photo' => 'image|max:1024', // 1MB Max
+            'photo' => 'required|image|mimes:jpg,jpeg,png,svg,gif|max:1024'
         ]);
 
         $user = Auth::user();
