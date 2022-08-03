@@ -82,10 +82,12 @@
                 </div>
             </form> --}}
             <!-- Navigation -->
+            <h6 class="navbar-heading text-muted">DashBoard</h6>
+             <hr class="my-3">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('home') }}">
-                        <i class="ni ni-tv-2 text-primary"></i> {{ __('Gestion') }}
+                        <i class="fa-solid fa-chart-line text-blue"></i> {{ __('Estadisticas') }}
                     </a>
                 </li>
                 {{-- <li class="nav-item">
@@ -118,6 +120,24 @@
                     </li>
                 @endif
 
+                 @if (auth()->user()->user_type_id == 2)
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <i class="fa-solid fa-calculator text-blue"></i> {{ __('Servicios') }}
+                        </a>
+                    </li>
+                @endif
+
+                
+                 @if (auth()->user()->user_type_id == 2)
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <i class="fa-solid fa-calendar text-blue"></i> {{ __('Citas') }}
+                        </a>
+                    </li>
+                @endif
+
+
                 
                {{--  <li class="nav-item ">
                     <a class="nav-link" href="{{ route('map') }}">
@@ -137,11 +157,6 @@
                 </li> --}}
                
             </ul>
-            <!-- Divider -->
-            <hr class="my-3">
-            <!-- Heading -->
-            <h6 class="navbar-heading text-muted">Citas</h6>
-            <!-- Navigation -->
            
         </div>
     </div>
