@@ -12,7 +12,7 @@
             <h3 class="mb-0">Informacion de Paciente</h3>
             </div>
             <div class="col text-right">
-                <button class="btn btn-sm btn-success">Excel</button>
+                <a class="btn btn-sm btn-success" href="{{ route('patients.excel') }}">Excel</a>
                 <button class="btn btn-sm btn-danger">Pdf</button>
                {{--  <a href="{{ url('/patients') }}" class="btn btn-sm btn-success">Regresar</a> --}}
             </div>

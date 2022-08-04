@@ -4,7 +4,7 @@
             <div class="card shadow">
         <div class="card-header border-0">
         <div class="row align-items-center">
-            <div class="col-sm-4">
+            <div class="col-sm-3">
             <h3 class="mb-0">Lista Pacientes</h3>
             </div>
             <div class="col-sm-4 text-left">
@@ -17,15 +17,20 @@
                 </form> --}}
                {{--  @livewire('patient-search') --}}
                 <div class="form-group mb-0">
-                            <div class="input-group input-group-alternative">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
-                                </div>
-                                <input class="form-control" placeholder="Search" wire:model="search" type="text">
-                            </div>
+                    <div class="input-group input-group-alternative">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-search"></i></span>
+                        </div>
+                        <input class="form-control" placeholder="Buscar paciente" wire:model="search" type="text">
+                        
+                    </div>
                 </div>
             </div>
-            <div class="col-sm-4 text-right">
+            <div class="col-sm-3 text-right">
+                 <a class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="bottom" title="Exportar pacientes" href="{{ route('patients.excel') }}">Excel <i class="fa-solid fa-file-excel"></i></a>
+                 <a class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="bottom" title="Exportar pacientes" href="{{ route('patients.pdf') }}">PDF <i class="fa-solid fa-file-pdf"></i></a>
+            </div>
+            <div class="col-sm-2 text-right">
             <a href="{{ url('/patients/create') }}" class="btn btn-sm btn-success">Nuevo Paciente</a>
             </div>
         </div>

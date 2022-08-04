@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Patient;
 
 use App\Models\Patient;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Excel;
 use App\Models\DentalHistory;
 use App\Models\InheritFamily;
+use App\Exports\PatientsExport;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
@@ -482,5 +484,15 @@ class PatientController extends Controller
 
         //dd($patients);
         return view('patients.index', compact('patients'));
+    }
+
+    public function exportAllPatientsExcel()
+    {
+        return (new PatientsExport)->download('patients.csv', Excel::CSV);
+    }
+
+    public function exportAllPatientsPdf()
+    {
+        return (new PatientsExport)->download('patients.pdf', Excel::DOMPDF);
     }
 }

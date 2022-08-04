@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "barryvdh/laravel-dompdf": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel-frontend-presets/argon": "^1.1",
         "laravel/framework": "^9.11",
@@ -15,6 +16,8 @@
         "laravel/ui": "^3.4",
         "laraveles/spanish": "^1.5",
         "livewire/livewire": "^2.10",
+        "maatwebsite/excel": "^3.1",
+        "phpoffice/phpspreadsheet": "^1.24",
         "realrashid/sweet-alert": "^5.1"
     },
     "require-dev": {

@@ -39,4 +39,8 @@ Route::middleware(['verified', 'auth', 'dentist'])->group(function () {
 	Route::put('/patients/{id}{idinheritFamily}{idDentalHistory}{idNoPersonalPathological}{idPersonalPathological}', [PatientController::class, 'update'])->name('patients.update');
 	Route::delete('/patients/{patient}', [PatientController::class, 'destroy'])->name('patients.destroy');
 	//Route::post('/filter/search', [PatientController::class, 'filter_search'])->name('filter_search');
+	//Export Excel Patients
+	Route::get('/patient/export-excel', [PatientController::class, 'exportAllPatientsExcel'])->name('patients.excel');
+	//Export PDF Patients
+	Route::get('/patient/export-pdf', [PatientController::class, 'exportAllPatientsPdf'])->name('patients.pdf');
 });
